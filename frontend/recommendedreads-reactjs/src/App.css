@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+.SearchResultsContainer {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.SearchResultsContainer.hide {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.SearchBarContainer.search-active + .SearchResultsContainer {
+  max-height: 200px;
+  overflow-y: auto;
+}
+

@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import { createTheme } from "@nextui-org/react"
+import { Link, createTheme } from "@nextui-org/react"
 import { Input } from '@nextui-org/react';
 import { NextUIProvider } from '@nextui-org/react';
 import { Button } from "@nextui-org/react";
 import {SearchIcon} from "./SearchIcon"
+import logo from './logo.png';
+import HelpIcon from "./Helpcon";
+import GithubIcon from "./GithubIcon";
 
 const darkTheme = createTheme({
   type: 'dark',
   theme: {colors:{
      background: '#121212',
 
-    gradient:  'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)'
+    gradient:  'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)',
+    helpGradient: 'rgb(30, 30, 30)'
   }
   }
 });
@@ -49,12 +53,17 @@ function App() {
 
   return (
     <NextUIProvider theme={darkTheme}>
-    <div className="App">
+    <div className="App" >
+      <div    style={{flexDirection: "column",
+        alignItems: "center",  
+        marginTop:"5%"}}>
+        <img src={logo} alt="Logo" width="500px"/>
+      </div>
       <div className="SearchBarContainer" style={{display:"flex", justifyContent:"center", 
         flexDirection: "column",
-        alignItems: "center",    minHeight: "150px",
-        maxHeight: "290px",
-        height: "calc(100% - 800px)", marginTop:"20%"}}>
+        alignItems: "center",    
+        }}>
+      
       <Input clearable bordered  initialValue="NextUI" 
       type="text"
       value={textInput}
@@ -63,6 +72,8 @@ function App() {
       width="50%"
       css={{ minWidth:"400px", marginBottom:"15px"
     }}
+    className="slide-top-left-corner"
+  
       />
       
         <Button shadow color="gradient" auto >
@@ -84,11 +95,23 @@ function App() {
               
             </div>
           ))}
+           
         </div>
        
       )}
-      
+     <div style={{position:"fixed", bottom:"5px", right:"5px"}}>
+      <Button  css={{ background: '$helpGradient' }} auto >
+          <HelpIcon/> 
+        </Button>
+        </div>
+        <div style={{position:"fixed", top:"5px", right:"5px"}}>
+      <Button as="a" href="https://github.com/onursercanyilmaz" target="_blank" css={{ background: '$helpGradient' }} auto >
+          <GithubIcon/> 
+        </Button>
+        </div>
     </div>
+    
+   
      </NextUIProvider>
   );
 }

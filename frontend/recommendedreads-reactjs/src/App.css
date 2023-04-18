@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  position: relative;
 }
 
 .App-logo {
@@ -55,3 +56,44 @@
   overflow-y: auto;
 }
 
+.helpButton
+{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+
+/* Define animation */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-top-left-corner {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-100%, -100%);
+  }
+}
+
+/* Apply animation */
+.slide-up {
+  animation-name: slide-up;
+  animation-duration: 1s;
+}
+
+/* send component to top of the page with animation */
+.slide-top-left-corner {
+  animation-name: slide-top-left-corner;
+  animation-duration: 1s;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
